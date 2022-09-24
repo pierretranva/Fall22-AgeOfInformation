@@ -24,13 +24,7 @@ def is_tight(c: int, data, currIndex: int, list_size: int):
 
 
 def primalDual(data: list):
-    # d(t)
-    download = None
-    # z(t)
-    zIndex = None
-    # y(t)
-    y = 0
-    # cost of downloading
+
     c = 2
     # constant theta
     theta = ((1 + 1 / c) ** c) - 1
