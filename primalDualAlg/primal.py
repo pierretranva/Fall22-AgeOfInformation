@@ -66,7 +66,7 @@ def primalDual(data: list):
 
 
 def main():
-    values = [1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1]
+    values = [0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0]
     # for i in range(40):
     #     values.append(random.randint(0, 2))
 
