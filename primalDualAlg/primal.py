@@ -55,13 +55,16 @@ def primal_dual_alg(data: list):
                     # z(t) = 1
                     data[i].set_z(1)
         currIndex += 1
-    # Correction: Variable y(t) when s(t) = 0 gets updated below at the end of slot T
-    for i in range(len(data)):
+    
+    currIndex = 0
+    while currIndex < len(data):
+        # Correction: Variable y(t) when s(t) = 0 gets updated below at the end of slot T
         if data[currIndex].get_state() == 0: # state s(t) is equal to 0
             for j in range(currIndex):
                 # if y "is not tight"
-                if not is_tight(c, data, currIndex, len(data)):
-                    data[currIndex].set_y(1)
+                if not is_tight(c, data, j, len(data)):
+                    data[j].set_y(1)
+        currIndex += 1
         
     return data, c
 
