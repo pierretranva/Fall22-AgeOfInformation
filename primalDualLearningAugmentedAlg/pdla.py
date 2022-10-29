@@ -1,3 +1,4 @@
+from struct import pack
 from primalDualLearningAugmentedAlg.Package import *
 import random
 from scipy.stats import poisson
@@ -33,19 +34,21 @@ def primal_dual_learning_augmentation_alg(Lambda: float, data: list, alpha: list
     for time in range(len(data)):  # Traverse the each time interval
         sum: float = 0.00
         for packages in range(len(data[time])):  # Traverse the packages in each time interval
-            currTimeSlot: TimeSlot = TimeSlot(data[time][packages])
+            currTimeSlot: TimeSlot = TimeSlot(packages)
             sum += currTimeSlot.get_packages().get_x()
             if sum < 1:
                 if 1 == 1:  # t >= a(t(j)) - Will resolve later
-                    currTimeSlot.get_packages().set_c(e(Lambda, d))
-                    currTimeSlot.get_packages().set_c_prime(1 / d)
+                    for singPackageIndex in range(len(currTimeSlot.get_packages())):
+                        currTimeSlot.get_packages_at_index(singPackageIndex).set_c(e(Lambda, d))
+                        currTimeSlot.get_packages_at_index(singPackageIndex).set_c_prime(1 / d) 
                 else:
-                    currTimeSlot.get_packages().set_c(e(1 / Lambda, d))
-                    currTimeSlot.get_packages().set_c_prime(Lambda / d)
-
-            data[time][packages].set_f(1 - sum)
+                    for singPackageIndex in range(len(currTimeSlot.get_packages())):
+                        currTimeSlot.get_packages_at_index(singPackageIndex).set_c(e(1 / Lambda, d))
+                        currTimeSlot.get_packages_at_index(singPackageIndex).set_c_prime(Lambda / d)
+                        
+            packages.set_f(1 - sum)
             data[time].set_x((data[time].get_x() + (1 / d)) * (sum + (1 / (currTimeSlot.get_packages().get_c() - 1))))  # need to find out if c is a global variable
-            data[time][packages].set_y(currTimeSlot.get_packages().get_c_prime())
+            packages.set_y(currTimeSlot.get_packages().get_c_prime())
     
     # if len(data) != len(alpha):
     #     raise Exception("data and alpha list inputs must have same number of items")
