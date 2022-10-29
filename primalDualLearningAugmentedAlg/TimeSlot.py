@@ -1,4 +1,5 @@
 from re import X
+import re
 import Package
 
 class TimeSlot:
@@ -8,6 +9,9 @@ class TimeSlot:
 
     def get_packages(self) -> list:
         return self.packages
+    
+    def get_package_at_index(self, index: int) -> Package:
+        return self.packages[index]
 
     def set_x(self):
         self.x = X

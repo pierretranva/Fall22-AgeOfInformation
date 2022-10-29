@@ -37,7 +37,7 @@ def primal_dual_learning_augmentation_alg(Lambda: float, data: list, alpha: list
             currTimeSlot: TimeSlot = TimeSlot(packages)
             sum += currTimeSlot.get_packages().get_x()
             if sum < 1:
-                if 1 == 1:  # t >= a(t(j)) - Will resolve later
+                if time >= 1:  # t >= a(t(j)) - Will resolve later
                     for singPackageIndex in range(len(currTimeSlot.get_packages())):
                         currTimeSlot.get_packages_at_index(singPackageIndex).set_c(e(Lambda, d))
                         currTimeSlot.get_packages_at_index(singPackageIndex).set_c_prime(1 / d) 
