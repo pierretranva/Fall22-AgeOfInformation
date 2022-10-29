@@ -11,10 +11,10 @@ class Package:
     def set_y(self, y: float):
         self.y = y
 
-    def get_y(self):
+    def get_y(self) -> float:
         return self.y
 
-    def get_x(self):
+    def get_x(self) -> float:
         return self.x
 
     def set_c(self, c: float):
