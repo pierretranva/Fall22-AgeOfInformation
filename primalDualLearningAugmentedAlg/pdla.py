@@ -5,6 +5,7 @@ from scipy.stats import poisson
 from scipy.stats import lomax
 import Package
 import TimeSlot
+import numpy as np
 
 def total_cost(data: list, c: int):
     cost: int = 0
@@ -73,7 +74,25 @@ def primal_dual_learning_augmentation_alg(Lambda: float, data: list, alpha: list
 
 def main():
     lambda_values = [0.4, 0.6, 0.8, 1.0]
+    replacement_rate = [0, 0.05, 0.1, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1.0]
     distribution = ["Poisson", "Pareto"]
+    num_experiments = 10
+    d = 100
+    mean_dist = 1
+    shape = 2
+    len_time_intervals = 1000
+
+    results = {}
+
+    for prob in replacement_rate:
+        for lam in lambda_values:
+            results[(p, 1)] = 0
+    
+    for prob in replacement_rate:
+        for i in range(num_experiments):
+            np.random.seed(i)
+            instance 
+    
     selected_distribution = distribution[0]
     mean = 1
     D = 0 # Holds the distribution used in the PDLA
