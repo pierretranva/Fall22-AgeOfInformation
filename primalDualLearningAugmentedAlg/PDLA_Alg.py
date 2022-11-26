@@ -25,7 +25,7 @@ def determine_total_cost(instance, d, solution):
 
 def primal_dual_learning_augmentation_alg(instance, d, lambdaVal, heurTimeList):
     # TO BE CONTINUED...
-    if len(instance == 0):
+    if(len(instance) == 0):
         return 0
     cost = 0
     jobs = []

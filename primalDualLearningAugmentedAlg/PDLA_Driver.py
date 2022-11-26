@@ -40,7 +40,7 @@ def main():
     numIterations = 1
 
     # key = distribution[0] # Pareto Case
-    key = distribution[1]  # Possion Case
+    key = distribution[1]   # Poisson Case
 
     for prob in replacementRates:
         for i in range(numExperiments):
@@ -55,7 +55,7 @@ def main():
                 )
                 print(" Lambda = ", l, " CR = ", LAPD / OPT)
 
-    return None  # Temporary Return Value (for now)
+    return None
 
 
 if __name__ == "__main__":
